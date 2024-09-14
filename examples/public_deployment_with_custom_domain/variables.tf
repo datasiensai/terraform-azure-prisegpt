@@ -221,6 +221,7 @@ variable "oai_model_deployment" {
     model_format    = string
     model_version   = string
     sku_name        = string
+    scale_type      = string  # Added scale_type
     sku_tier        = optional(string)
     sku_size        = optional(number)
     sku_family      = optional(string)
@@ -244,6 +245,7 @@ variable "oai_model_deployment" {
           sku_capacity = (Optional) Tokens-per-Minute (TPM). If the SKU supports sku out/in then the capacity integer should be included. If sku out/in is not possible for the resource this may be omitted. Default value is 1. Changing this forces a new resource to be created.
         }
         rai_policy_name = (Optional) The name of RAI policy. Changing this forces a new resource to be created.
+        scale_type       = (Required) The scaling type for the deployment. Possible values: "standard", "auto", etc.
       }))
   DESCRIPTION
   nullable    = false
