@@ -53,6 +53,7 @@ locals {
 
     ### User - Registration and Login ###
     ALLOW_EMAIL_LOGIN         = var.libre_app_allow_email_login
+    ALLOW_UNVERIFIED_EMAIL_LOGIN = var.libre_app_allow_unverified_email_login
     ALLOW_REGISTRATION        = var.libre_app_allow_registration
     ALLOW_SOCIAL_LOGIN        = var.libre_app_allow_social_login
     ALLOW_SOCIAL_REGISTRATION = var.libre_app_allow_social_registration

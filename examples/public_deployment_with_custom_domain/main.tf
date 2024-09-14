@@ -21,8 +21,8 @@ resource "random_integer" "number" {
 }
 
 module "private-chatgpt-openai" {
-  source  = "Pwd9000-ML/openai-private-chatgpt/azurerm"
-  version = "~> 2.2.0"
+  source  = "git@github.com:bijucyborg/terraform-azurerm-openai-private-chatgpt.git"
+  #version = "~> 2.2.0"
 
   # 01 common + RG #
   #================#
@@ -128,6 +128,7 @@ module "private-chatgpt-openai" {
   # User Registration
   libre_app_allow_email_login         = var.libre_app_allow_email_login
   libre_app_allow_registration        = var.libre_app_allow_registration
+  libre_app_allow_unverified_email_login = var.libre_app_allow_unverified_email_login
   libre_app_allow_social_login        = var.libre_app_allow_social_login
   libre_app_allow_social_registration = var.libre_app_allow_social_registration
   libre_app_jwt_secret                = var.libre_app_jwt_secret

@@ -620,6 +620,12 @@ variable "libre_app_allow_registration" {
   default     = true
 }
 
+variable "libre_app_allow_unverified_email_login" {
+  type        = bool
+  description = "Allow Registration"
+  default     = true
+}
+
 variable "libre_app_allow_social_login" {
   type        = bool
   description = "Allow Social Login"

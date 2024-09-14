@@ -57,7 +57,7 @@ oai_model_deployment = [
     model_format    = "OpenAI"
     model_version   = "2024-08-06"
     sku_name        = "Standard"
-    sku_capacity    = 20
+    sku_capacity    = 8
     scale_type      = "standard"
   },
   {
@@ -66,7 +66,7 @@ oai_model_deployment = [
     model_format    = "OpenAI"
     model_version   = "2024-07-18"
     sku_name        = "Standard"
-    sku_capacity    = 20
+    sku_capacity    = 8
     scale_type      = "standard"
   },
   {
@@ -75,7 +75,7 @@ oai_model_deployment = [
     model_format    = "OpenAI"
     model_version   = "turbo-2024-04-09"
     sku_name        = "Standard"
-    sku_capacity    = 20
+    sku_capacity    = 8
     scale_type      = "standard"
   },
   {
@@ -84,7 +84,7 @@ oai_model_deployment = [
     model_format    = "OpenAI"
     model_version   = "3.0"
     sku_name        = "Standard"
-    sku_capacity    = 2
+    sku_capacity    = 1
     scale_type      = "standard"
   }
 ]
@@ -134,7 +134,7 @@ libre_app_title         = "PRIVATE jl CHATBOT"
 libre_app_custom_footer = "Privately hosted GPT App powered by Azure OpenAI and LibreChat"
 libre_app_host          = "0.0.0.0"
 libre_app_port          = 80
-libre_app_docker_image  = "ghcr.io/danny-avila/librechat-dev-api:81ff598eba338e680c91e237cea3e3df870bce23" #v0.6.6 (Pre-release)
+libre_app_docker_image  = "ghcr.io/danny-avila/librechat-dev-api:latest" #v0.6.6 (Pre-release)
 libre_app_mongo_uri     = null                                                                             # leave null to use the cosmosdb uri saved in keyvault created by this module
 libre_app_domain_client = "http://localhost:80"
 libre_app_domain_server = "http://localhost:80"
@@ -166,6 +166,7 @@ libre_app_enable_meilisearch = false
 # User Registration
 libre_app_allow_email_login         = true
 libre_app_allow_registration        = true
+libre_app_allow_unverified_email_login = true
 libre_app_allow_social_login        = false
 libre_app_allow_social_registration = false
 libre_app_jwt_secret                = null # leave null to use the secret saved in keyvault created by this module
