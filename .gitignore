@@ -13,6 +13,9 @@
 *.tfstate
 *.tfstate.*
 
+# terraform plan
+jl-gpt-14Sept2024
+
 # Crash log files
 crash.log
 
