@@ -39,13 +39,37 @@ resource "azurerm_container_app" "rag_api_app_name" {
         name  = "EMBEDDINGS_MODEL"
         value = "text-embedding-3-large"
       }
+      env {
+        name  = "VECTOR_DB_TYPE"
+        value = "pgvector"
+      }
+      env {
+        name  = "POSTGRES_DB"
+        value = "postgres"  # Default database name for PostgreSQL
+      }
+      env {
+        name  = "POSTGRES_USER"
+        value = azurerm_postgresql_flexible_server.default.administrator_login
+      }
+      env {
+        name  = "POSTGRES_PASSWORD"
+        value = azurerm_postgresql_flexible_server.default.administrator_password
+      }
+      env {
+        name  = "DB_HOST"
+        value = azurerm_postgresql_flexible_server.default.fqdn
+      }
+      env {
+        name  = "DB_PORT"
+        value = "5432"  # Default PostgreSQL port
+      }
     }
   }
 
   ingress {
     allow_insecure_connections = false
     external_enabled           = true
-    target_port                = 80
+    target_port                = 8000
     traffic_weight {
       percentage      = 100
       latest_revision = true
