@@ -47,7 +47,7 @@ variable "subnet_config" {
   })
   default = {
     subnet_name                                   = "app-cosmos-sub"
-    subnet_address_space                          = ["10.4.0.0/24"]
+    subnet_address_space                          = ["10.4.0.0/16"]
     service_endpoints                             = ["Microsoft.AzureCosmosDB", "Microsoft.Web"]
     private_endpoint_network_policies_enabled     = "Enabled"
     private_link_service_network_policies_enabled = false
