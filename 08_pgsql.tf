@@ -11,8 +11,4 @@ resource "azurerm_postgresql_flexible_server" "default" {
   sku_name               = var.pgsql_sku_name
   backup_retention_days  = var.pgsql_backup_retention_days
 
-  depends_on = [
-    azurerm_private_dns_zone_virtual_network_link.default,
-    azurerm_subnet.pgsql_subnet
-  ]
 }
