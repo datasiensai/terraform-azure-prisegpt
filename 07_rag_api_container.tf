@@ -50,10 +50,6 @@ resource "azurerm_container_app" "rag_api_app_name" {
     }
   }
 
-  logs {
-    destination = "log-analytics"
-    log_analytics_workspace_id = azurerm_log_analytics_workspace.rag_api_logs.id
-  }
 }
 
 resource "azurerm_log_analytics_workspace" "rag_api_logs" {
