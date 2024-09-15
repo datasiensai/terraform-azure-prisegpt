@@ -15,6 +15,8 @@ resource "azurerm_container_app" "rag_api_app_name" {
   revision_mode                = "Multiple"
 
   template {
+    min_replicas = 1
+    max_replicas = 2
     container {
       name   = var.rag_api_app_name
       image  = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
