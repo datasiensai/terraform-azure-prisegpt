@@ -803,3 +803,8 @@ variable "pgsql_backup_retention_days" {
   type        = number
   default     = 7
 }
+
+variable "database_extensions" {
+  type        = list(string)
+  description = "A list of PostgreSQL extensions to enable."
+}

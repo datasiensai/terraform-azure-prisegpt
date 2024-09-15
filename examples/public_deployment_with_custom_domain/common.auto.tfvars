@@ -226,4 +226,4 @@ pgsql_administrator_password = "Re10ance"
 pgsql_storage_mb = 32768
 pgsql_sku_name = "GP_Standard_D2s_v3"
 pgsql_backup_retention_days = 7
-
+database_extensions = ["vector"]
