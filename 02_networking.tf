@@ -38,11 +38,4 @@ resource "azurerm_subnet" "rag_api_subnet" {
   virtual_network_name = azurerm_virtual_network.az_openai_vnet.name
   address_prefixes     = var.rag_api_subnet_config.subnet_address_space
 
-  delegation {
-    name = "delegation"
-    service_delegation {
-      name    = "Microsoft.App/environments"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
-    }
-  }
 }
