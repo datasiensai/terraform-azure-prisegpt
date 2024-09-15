@@ -30,3 +30,19 @@ resource "azurerm_subnet" "az_openai_subnet" {
     }
   }
 }
+
+# New subnet for RAG API
+resource "azurerm_subnet" "rag_api_subnet" {
+  name                 = var.rag_api_subnet_config.subnet_name
+  resource_group_name  = azurerm_resource_group.az_openai_rg.name
+  virtual_network_name = azurerm_virtual_network.az_openai_vnet.name
+  address_prefixes     = var.rag_api_subnet_config.subnet_address_space
+
+  delegation {
+    name = "delegation"
+    service_delegation {
+      name    = "Microsoft.App/environments"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
+}

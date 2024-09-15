@@ -63,6 +63,18 @@ variable "subnet_config" {
   description = "A list of subnet configuration objects to create subnets in the virtual network."
 }
 
+variable "rag_api_subnet_config" {
+  type = object({
+    subnet_name          = string
+    subnet_address_space = list(string)
+  })
+  default = {
+    subnet_name          = "rag-api-subnet"
+    subnet_address_space = ["10.5.0.0/16"]
+  }
+  description = "Configuration for the RAG API subnet"
+}
+
 ### 03 key vault ###
 variable "kv_name" {
   type        = string

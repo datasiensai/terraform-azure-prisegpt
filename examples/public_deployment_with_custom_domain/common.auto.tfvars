@@ -10,10 +10,10 @@ tags = {
 
 ### 02 networking ###
 virtual_network_name = "jlgptvnet"
-vnet_address_space   = ["10.3.0.0/24"]
+vnet_address_space   = ["10.0.0.0/8"]
 subnet_config = {
   subnet_name                                   = "jlgpt-sub"
-  subnet_address_space                          = ["10.3.0.0/24"]
+  subnet_address_space                          = ["10.3.0.0/16"]
   service_endpoints                             = ["Microsoft.AzureCosmosDB", "Microsoft.Web", "Microsoft.KeyVault"]
   private_endpoint_network_policies_enabled     = "Enabled"
   private_link_service_network_policies_enabled = false
