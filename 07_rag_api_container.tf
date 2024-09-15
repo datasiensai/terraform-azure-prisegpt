@@ -4,6 +4,7 @@ resource "azurerm_container_app_environment" "rag_api_app" {
   resource_group_name               = azurerm_resource_group.az_openai_rg.name
   internal_load_balancer_enabled    = true
   infrastructure_subnet_id          = azurerm_subnet.rag_api_subnet.id
+  log_analytics_workspace_id        = azurerm_log_analytics_workspace.rag_api_logs.id
   tags                              = var.tags
 }
 
@@ -11,7 +12,7 @@ resource "azurerm_container_app" "rag_api_app_name" {
   name                         = "ca-${var.rag_api_app_name}"
   container_app_environment_id = azurerm_container_app_environment.rag_api_app.id
   resource_group_name          = azurerm_resource_group.az_openai_rg.name
-  revision_mode                = "Single"
+  revision_mode                = "Multiple"
 
   template {
     container {
@@ -48,4 +49,18 @@ resource "azurerm_container_app" "rag_api_app_name" {
       latest_revision = true
     }
   }
+
+  logs {
+    destination = "log-analytics"
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.rag_api_logs.id
+  }
+}
+
+resource "azurerm_log_analytics_workspace" "rag_api_logs" {
+  name                = "log-${var.rag_api_app_name}"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 30
+  tags                = var.tags
 }
