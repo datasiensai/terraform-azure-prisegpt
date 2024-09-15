@@ -763,3 +763,43 @@ variable "rag_api_app_memory" {
   type        = string
   default     = "2.0Gi"
 }
+
+variable "pgsql_server_name" {
+  description = "Name of the PostgreSQL Flexible Server"
+  type        = string
+}
+
+variable "pgsql_version" {
+  description = "Version of PostgreSQL"
+  type        = string
+  default     = "13"
+}
+
+variable "pgsql_administrator_login" {
+  description = "Administrator login for PostgreSQL"
+  type        = string
+}
+
+variable "pgsql_administrator_password" {
+  description = "Administrator password for PostgreSQL"
+  type        = string
+  sensitive   = true
+}
+
+variable "pgsql_storage_mb" {
+  description = "Storage in MB for PostgreSQL"
+  type        = number
+  default     = 32768
+}
+
+variable "pgsql_sku_name" {
+  description = "SKU name for PostgreSQL"
+  type        = string
+  default     = "GP_Standard_D2s_v3"
+}
+
+variable "pgsql_backup_retention_days" {
+  description = "Backup retention days for PostgreSQL"
+  type        = number
+  default     = 7
+}

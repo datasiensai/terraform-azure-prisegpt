@@ -37,5 +37,20 @@ resource "azurerm_subnet" "rag_api_subnet" {
   resource_group_name  = azurerm_resource_group.az_openai_rg.name
   virtual_network_name = azurerm_virtual_network.az_openai_vnet.name
   address_prefixes     = var.rag_api_subnet_config.subnet_address_space
+}
 
+# New delegated subnet for PostgreSQL database
+resource "azurerm_subnet" "pgsql_subnet" {
+  name                 = "pgsql-subnet"
+  resource_group_name  = azurerm_resource_group.az_openai_rg.name
+  virtual_network_name = azurerm_virtual_network.az_openai_vnet.name
+  address_prefixes     = ["10.4.0.0/16"]  # Adjust this as needed
+
+  delegation {
+    name = "fs"
+    service_delegation {
+      name    = "Microsoft.DBforPostgreSQL/flexibleServers"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
 }

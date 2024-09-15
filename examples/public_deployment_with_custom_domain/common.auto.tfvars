@@ -218,3 +218,12 @@ rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
 rag_api_app_cpu = "1.0"
 rag_api_app_memory = "2.0Gi"
 
+## pgsql
+pgsql_server_name = "jlgptpgsql"
+pgsql_version = "13"
+pgsql_administrator_login = "adminTerraform"
+pgsql_administrator_password = "Re10ance"
+pgsql_storage_mb = 32768
+pgsql_sku_name = "GP_Standard_D2s_v3"
+pgsql_backup_retention_days = 7
+
