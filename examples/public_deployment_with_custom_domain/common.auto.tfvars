@@ -112,7 +112,7 @@ cosmosdb_public_network_access_enabled     = true
 ### 06 app services (librechat app + meilisearch) ###
 # App Service Plan
 app_service_name     = "jlgptasp"
-app_service_sku_name = "B1"
+app_service_sku_name = "B2"
 
 # LibreChat App Service
 libre_app_name                          = "jlgptchatapp"

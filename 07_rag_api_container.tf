@@ -23,6 +23,7 @@ resource "azurerm_container_app" "rag_api_app_name" {
     target_port                = 80
     traffic_weight {
       percentage = 100
+      latest_revision = true
     }
   }
 
