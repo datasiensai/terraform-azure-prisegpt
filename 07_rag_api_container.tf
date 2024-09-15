@@ -8,7 +8,6 @@ resource "azurerm_container_app_environment" "rag_api_app" {
 
 resource "azurerm_container_app" "rag_api_app_name" {
   name                         = "ca-${rag_api_app_name}"
-
   container_app_environment_id = azurerm_container_app_environment.rag_api_app.id
   resource_group_name          = azurerm_resource_group.az_openai_rg.name
   revision_mode                = "Single"
@@ -35,7 +34,8 @@ resource "azurerm_container_app" "rag_api_app_name" {
       image  = "danny-avila/librechat-rag-api-dev:latest"
       cpu    = "1.0"
       memory = "2.0Gi"
-  }
+    }
+  }  
 
 
 }

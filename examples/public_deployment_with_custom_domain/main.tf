@@ -142,4 +142,10 @@ module "private-chatgpt-openai" {
   librechat_app_custom_domain_name   = var.librechat_app_custom_domain_name
   librechat_app_custom_dns_zone_name = var.librechat_app_custom_dns_zone_name
   dns_resource_group_name            = var.dns_resource_group_name
+
+    # RAG API Container App
+  rag_api_app_name = "${var.rag_api_app_name}${random_integer.number.result}"
+  rag_api_app_image = var.rag_api_app_image
+  rag_api_app_cpu = var.rag_api_app_cpu
+  rag_api_app_memory = var.rag_api_app_memory
 }
