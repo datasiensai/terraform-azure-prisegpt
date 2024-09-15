@@ -675,3 +675,26 @@ variable "dns_resource_group_name" {
   description = "The Resource Group that contains the custom DNS Zone to use for the App Service"
   default     = "dns-rg"
 }
+
+variable "rag_api_app_name" {
+  description = "Name of the RAG API Container App"
+  type        = string
+}
+
+variable "rag_api_app_image" {
+  description = "Docker image for the RAG API Container App"
+  type        = string
+  default     = "danny-avila/librechat-rag-api-dev:latest"
+}
+
+variable "rag_api_app_cpu" {
+  description = "CPU allocation for the RAG API Container App"
+  type        = string
+  default     = "1.0"
+}
+
+variable "rag_api_app_memory" {
+  description = "Memory allocation for the RAG API Container App"
+  type        = string
+  default     = "2.0Gi"
+}

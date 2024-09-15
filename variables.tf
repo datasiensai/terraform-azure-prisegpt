@@ -733,3 +733,21 @@ variable "rag_api_app_name" {
   description = "Name of the RAG API app"
   default     = "rag-api"
 }
+
+variable "rag_api_app_image" {
+  description = "Docker image for the RAG API Container App"
+  type        = string
+  default     = "danny-avila/librechat-rag-api-dev:latest"
+}
+
+variable "rag_api_app_cpu" {
+  description = "CPU allocation for the RAG API Container App"
+  type        = string
+  default     = "1.0"
+}
+
+variable "rag_api_app_memory" {
+  description = "Memory allocation for the RAG API Container App"
+  type        = string
+  default     = "2.0Gi"
+}

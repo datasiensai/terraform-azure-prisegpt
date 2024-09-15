@@ -201,3 +201,11 @@ libre_app_custom_domain_create     = false
 librechat_app_custom_domain_name   = "privategptchatbot"
 librechat_app_custom_dns_zone_name = "domain.com"
 dns_resource_group_name            = "DNS-Resource-Group-Name"
+
+
+### 07 RAG API Container App ###
+rag_api_app_name = "jlgptragapi"
+rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
+rag_api_app_cpu = "1.0"
+rag_api_app_memory = "2.0Gi"
+
