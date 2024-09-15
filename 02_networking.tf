@@ -54,3 +54,17 @@ resource "azurerm_subnet" "pgsql_subnet" {
     }
   }
 }
+
+# Add a private DNS zone
+resource "azurerm_private_dns_zone" "default" {
+  name                = "${var.pgsql_server_name}.private.postgres.database.azure.com"
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
+}
+
+# Link the private DNS zone to the virtual network
+resource "azurerm_private_dns_zone_virtual_network_link" "default" {
+  name                  = "${var.pgsql_server_name}-pdz-vnet-link"
+  private_dns_zone_name = azurerm_private_dns_zone.default.name
+  virtual_network_id    = azurerm_virtual_network.az_openai_vnet.id
+  resource_group_name   = azurerm_resource_group.az_openai_rg.name
+}
