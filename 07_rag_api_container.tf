@@ -3,7 +3,7 @@ resource "azurerm_container_app_environment" "rag_api_app" {
   location                          = var.location
   resource_group_name               = azurerm_resource_group.az_openai_rg.name
   internal_load_balancer_enabled    = true
-  infrastructure_subnet_id          = var.libre_app_virtual_network_subnet_id != null ? var.libre_app_virtual_network_subnet_id : azurerm_subnet.az_openai_subnet.id
+  infrastructure_subnet_id          = azurerm_subnet.rag_api_subnet.id
   tags                              = var.tags
 }
 
