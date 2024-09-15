@@ -727,3 +727,9 @@ variable "dns_resource_group_name" {
   description = "The Resource Group that contains the custom DNS Zone to use for the App Service"
   default     = "dns-rg"
 }
+
+variable "rag_api_app_name" {
+  type        = string
+  description = "Name of the RAG API app"
+  default     = "rag-api"
+}
