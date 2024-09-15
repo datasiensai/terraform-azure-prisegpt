@@ -803,9 +803,3 @@ variable "pgsql_backup_retention_days" {
   type        = number
   default     = 7
 }
-
-variable "pgsql_backup_retention_days" {
-  description = "Backup retention days for PostgreSQL"
-  type        = number
-  default     = 7
-}
