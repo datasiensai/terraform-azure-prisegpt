@@ -13,8 +13,13 @@ resource "azurerm_container_app" "rag_api_app_name" {
   resource_group_name          = azurerm_resource_group.az_openai_rg.name
   revision_mode                = "Single"
 
-  registry {
-    server = "ghcr.io"
+  template {
+    container {
+      name   = var.rag_api_app_name
+      image  = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
+      cpu    = "1.0"
+      memory = "2.0Gi"
+    }
   }
 
   ingress {
@@ -22,17 +27,8 @@ resource "azurerm_container_app" "rag_api_app_name" {
     external_enabled           = true
     target_port                = 80
     traffic_weight {
-      percentage = 100
+      percentage      = 100
       latest_revision = true
-    }
-  }
-
-  template {
-    container {
-      name   = "${var.rag_api_app_name}"
-      image  = "danny-avila/librechat-rag-api-dev:latest"
-      cpu    = "1.0"
-      memory = "2.0Gi"
     }
   }
 }
