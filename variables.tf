@@ -781,7 +781,7 @@ variable "pgsql_administrator_login" {
 }
 
 variable "pgsql_administrator_password" {
-  description = "Administrator password for PostgreSQL"
+  description = "The administrator password for the PostgreSQL server"
   type        = string
   sensitive   = true
 }
@@ -796,6 +796,12 @@ variable "pgsql_sku_name" {
   description = "SKU name for PostgreSQL"
   type        = string
   default     = "GP_Standard_D2s_v3"
+}
+
+variable "pgsql_backup_retention_days" {
+  description = "Backup retention days for PostgreSQL"
+  type        = number
+  default     = 7
 }
 
 variable "pgsql_backup_retention_days" {
