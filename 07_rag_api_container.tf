@@ -19,6 +19,23 @@ resource "azurerm_container_app" "rag_api_app_name" {
       image  = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
       cpu    = "1.0"
       memory = "2.0Gi"
+
+      env {
+        name  = "RAG_AZURE_OPENAI_API_KEY"
+        value = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+      }
+      env {
+        name  = "RAG_AZURE_OPENAI_ENDPOINT"
+        value = azurerm_cognitive_account.az_openai.endpoint
+      }
+      env {
+        name  = "EMBEDDINGS_PROVIDER"
+        value = "azure"
+      }
+      env {
+        name  = "EMBEDDINGS_MODEL"
+        value = "text-embedding-3-large"
+      }
     }
   }
 

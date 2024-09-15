@@ -79,6 +79,15 @@ oai_model_deployment = [
     scale_type      = "standard"
   },
   {
+    deployment_id   = "text-embedding-3-large"
+    model_name      = "text-embedding-3-large"
+    model_format    = "OpenAI"
+    model_version   = "1"
+    sku_name        = "Standard"
+    sku_capacity    = 8
+    scale_type      = "standard"
+  },
+  {
     deployment_id   = "dall-e-3"
     model_name      = "dall-e-3"
     model_format    = "OpenAI"
