@@ -214,7 +214,7 @@ dns_resource_group_name            = "DNS-Resource-Group-Name"
 
 ### 07 RAG API Container App ###
 rag_api_app_name = "jlgptragapi"
-rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
+rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:fc887ba84797c2ba29b5f2302f70458001b34290"
 rag_api_app_cpu = "1.0"
 rag_api_app_memory = "2.0Gi"
 
