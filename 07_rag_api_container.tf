@@ -25,7 +25,7 @@ resource "azurerm_container_app" "rag_api_app_name" {
 
       env {
         name  = "RAG_AZURE_OPENAI_API_KEY"
-        value = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+        value = "ccd98a3e7dc345e0905b4f26c2683173"
       }
       env {
         name  = "RAG_AZURE_OPENAI_ENDPOINT"

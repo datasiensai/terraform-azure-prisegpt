@@ -40,6 +40,21 @@ resource "azurerm_cosmosdb_account" "az_openai_mongodb" {
   is_virtual_network_filter_enabled = var.cosmosdb_is_virtual_network_filter_enabled
   public_network_access_enabled     = var.cosmosdb_public_network_access_enabled
   depends_on                        = [azurerm_subnet.az_openai_subnet]
+
+  capabilities {
+    name = "EnableServerless"
+  }
+}
+
+# Create a MongoDB database
+resource "azurerm_cosmosdb_mongo_database" "az_openai_mongodb_db" {
+  name                = "librechat"
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
+  account_name        = azurerm_cosmosdb_account.az_openai_mongodb.name
+
+  autoscale_settings {
+    max_throughput = 1000
+  }
 }
 
 ### Save MongoDB URI details to Key Vault for consumption by other services (e.g. LibreChat App)

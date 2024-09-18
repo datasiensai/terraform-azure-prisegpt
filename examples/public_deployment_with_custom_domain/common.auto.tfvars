@@ -1,6 +1,7 @@
 ### 01 Common Variables + RG ###
-resource_group_name = "JL-GPT-V1-RG"
+resource_group_name = "BK-GPT-V1-RG"
 location            = "SwedenCentral"
+subscription_id = "fd871c23-a121-4e6e-9270-c4f963e67aee"
 tags = {
   Terraform   = "True"
   Description = "Private ChatGPT hosted on Azure OpenAI"
@@ -9,10 +10,10 @@ tags = {
 }
 
 ### 02 networking ###
-virtual_network_name = "jlgptvnet"
+virtual_network_name = "bkgptvnet"
 vnet_address_space   = ["10.0.0.0/8"]
 subnet_config = {
-  subnet_name                                   = "jlgpt-sub"
+  subnet_name                                   = "bkgpt-sub"
   subnet_address_space                          = ["10.3.0.0/16"]
   service_endpoints                             = ["Microsoft.AzureCosmosDB", "Microsoft.Web", "Microsoft.KeyVault"]
   private_endpoint_network_policies_enabled     = "Enabled"
@@ -28,7 +29,7 @@ subnet_config = {
 }
 
 ### 03 KeyVault ###
-kv_name                  = "jlgptkv"
+kv_name                  = "bkgptkv"
 kv_sku                   = "standard"
 kv_fw_default_action     = "Deny"
 kv_fw_bypass             = "AzureServices"
@@ -36,9 +37,9 @@ kv_fw_allowed_ips        = ["0.0.0.0/0"] # Allow all IPs (for jl purposes)
 kv_fw_network_subnet_ids = null          # leave null to allow access from default subnet of this module
 
 ### 04 Create OpenAI Service ###
-oai_account_name                       = "jlgptoai"
+oai_account_name                       = "bkgptoai"
 oai_sku_name                           = "S0"
-oai_custom_subdomain_name              = "jlgptoai"
+oai_custom_subdomain_name              = "bkgptoai"
 oai_dynamic_throttling_enabled         = false
 oai_fqdns                              = []
 oai_local_auth_enabled                 = true
@@ -99,7 +100,7 @@ oai_model_deployment = [
 ]
 
 ### 05 cosmosdb ###
-cosmosdb_name                    = "jlgptcosmosdb"
+cosmosdb_name                    = "bkgptcosmosdb"
 cosmosdb_offer_type              = "Standard"
 cosmosdb_kind                    = "MongoDB"
 cosmosdb_automatic_failover      = false
@@ -120,11 +121,11 @@ cosmosdb_public_network_access_enabled     = true
 
 ### 06 app services (librechat app + meilisearch) ###
 # App Service Plan
-app_service_name     = "jlgptasp"
+app_service_name     = "bkgptasp"
 app_service_sku_name = "B2"
 
 # LibreChat App Service
-libre_app_name                          = "jlgptchatapp"
+libre_app_name                          = "bkgptchatapp"
 libre_app_public_network_access_enabled = true
 libre_app_virtual_network_subnet_id     = null # Access is allowed on the built in subnet of this module. If networking is created as part of the module, this will be automatically populated if value is 'null' (priority 100)
 libre_app_allowed_subnets               = null # Add any other subnet ids to allow access to the app service (optional)
@@ -213,13 +214,13 @@ dns_resource_group_name            = "DNS-Resource-Group-Name"
 
 
 ### 07 RAG API Container App ###
-rag_api_app_name = "jlgptragapi"
+rag_api_app_name = "bkgptragapi"
 rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:fc887ba84797c2ba29b5f2302f70458001b34290"
 rag_api_app_cpu = "1.0"
 rag_api_app_memory = "2.0Gi"
 
 ## pgsql
-pgsql_server_name = "jlgptpgsql"
+pgsql_server_name = "bkgptpgsql"
 pgsql_version = "13"
 pgsql_administrator_login = "adminTerraform"
 pgsql_administrator_password = "Re10ance"

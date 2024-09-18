@@ -5,6 +5,13 @@ variable "location" {
   description = "Azure region where resources will be hosted."
 }
 
+variable "subscription_id" {
+  type        = string
+  description = "The Subscription ID which should be used."
+}
+
+# ... rest of your existing  ...
+
 variable "tags" {
   type        = map(string)
   default     = {}
