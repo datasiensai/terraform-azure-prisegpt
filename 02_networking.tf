@@ -68,3 +68,29 @@ resource "azurerm_private_dns_zone_virtual_network_link" "default" {
   virtual_network_id    = azurerm_virtual_network.az_openai_vnet.id
   resource_group_name   = azurerm_resource_group.az_openai_rg.name
 }
+
+# Add a private DNS zone for RAG API
+resource "azurerm_private_dns_zone" "rag_api" {
+  name                = var.rag_api_dns_zone_name
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
+}
+
+# Link the RAG API private DNS zone to the virtual network
+resource "azurerm_private_dns_zone_virtual_network_link" "rag_api" {
+  name                  = "${var.rag_api_app_name}-pdz-vnet-link"
+  private_dns_zone_name = azurerm_private_dns_zone.rag_api.name
+  virtual_network_id    = azurerm_virtual_network.az_openai_vnet.id
+  resource_group_name   = azurerm_resource_group.az_openai_rg.name
+  registration_enabled  = true
+}
+
+# Add A record for RAG API
+resource "azurerm_private_dns_a_record" "rag_api" {
+  name                = "*"
+  zone_name           = azurerm_private_dns_zone.rag_api.name
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
+  ttl                 = 300
+  records             = [azurerm_container_app_environment.rag_api_app.static_ip_address]
+
+  depends_on = [azurerm_container_app_environment.rag_api_app]
+}

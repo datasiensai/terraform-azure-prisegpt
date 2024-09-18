@@ -86,3 +86,7 @@ resource "azurerm_log_analytics_workspace" "rag_api_logs" {
   retention_in_days   = 30
   tags                = var.tags
 }
+
+output "rag_api_static_ip" {
+  value = azurerm_container_app_environment.rag_api_app.static_ip_address
+}
