@@ -9,7 +9,6 @@ provider "azurerm" {
       purge_soft_delete_on_destroy = true
     }
   }
-  subscription_id = var.subscription_id
 }
 
 # #################################################
@@ -36,6 +35,8 @@ module "private-chatgpt-openai" {
   virtual_network_name = "${var.virtual_network_name}${random_integer.number.result}"
   vnet_address_space   = var.vnet_address_space
   subnet_config        = var.subnet_config
+  rag_api_subnet_config = var.rag_api_subnet_config
+  rag_api_dns_zone_name = var.rag_api_dns_zone_name
 
   # 03 keyvault (Solution Secrets)
   #==============================#

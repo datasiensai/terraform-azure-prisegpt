@@ -762,3 +762,10 @@ variable "database_extensions" {
   type        = list(string)
   description = "A list of PostgreSQL extensions to enable."
 }
+
+
+variable "rag_api_dns_zone_name" {
+  type        = string
+  description = "The name of the private DNS zone for the RAG API"
+}
+

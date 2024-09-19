@@ -68,11 +68,12 @@ variable "rag_api_subnet_config" {
     subnet_name          = string
     subnet_address_space = list(string)
   })
-  default = {
-    subnet_name          = "rag-api-subnet"
-    subnet_address_space = ["10.5.0.0/16"]
-  }
   description = "Configuration for the RAG API subnet"
+}
+
+variable "rag_api_dns_zone_name" {
+  type        = string
+  description = "The name of the private DNS zone for the RAG API"
 }
 
 ### 03 key vault ###

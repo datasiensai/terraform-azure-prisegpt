@@ -218,6 +218,14 @@ rag_api_app_name = "bkgptragapi"
 rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:fc887ba84797c2ba29b5f2302f70458001b34290"
 rag_api_app_cpu = "1.0"
 rag_api_app_memory = "2.0Gi"
+rag_api_subnet_config = {
+  subnet_name          = "rag-api-subnet"
+  subnet_address_space = ["10.5.0.0/16"]
+}
+
+rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
+
+# ... other new variable values ...
 
 ## pgsql
 pgsql_server_name = "bkgptpgsql"
