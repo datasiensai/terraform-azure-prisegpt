@@ -71,11 +71,6 @@ variable "rag_api_subnet_config" {
   description = "Configuration for the RAG API subnet"
 }
 
-variable "rag_api_dns_zone_name" {
-  type        = string
-  description = "The name of the private DNS zone for the RAG API"
-}
-
 ### 03 key vault ###
 variable "kv_name" {
   type        = string
