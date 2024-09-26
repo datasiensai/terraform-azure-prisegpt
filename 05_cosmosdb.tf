@@ -52,9 +52,6 @@ resource "azurerm_cosmosdb_mongo_database" "az_openai_mongodb_db" {
   resource_group_name = azurerm_resource_group.az_openai_rg.name
   account_name        = azurerm_cosmosdb_account.az_openai_mongodb.name
 
-  autoscale_settings {
-    max_throughput = 1000
-  }
 }
 
 ### Save MongoDB URI details to Key Vault for consumption by other services (e.g. LibreChat App)

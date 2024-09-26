@@ -767,5 +767,6 @@ variable "database_extensions" {
 variable "rag_api_dns_zone_name" {
   type        = string
   description = "The name of the private DNS zone for the RAG API"
+  default     = "ragapi.azurecontainerapps.io"
 }
 

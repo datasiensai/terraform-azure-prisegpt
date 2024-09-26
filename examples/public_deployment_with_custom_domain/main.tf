@@ -21,7 +21,7 @@ resource "random_integer" "number" {
 }
 
 module "private-chatgpt-openai" {
-  source  = "git@github.com:bijucyborg/terraform-azurerm-openai-private-chatgpt.git"
+  source  = "git@github.com:bijucyborg/tf-private-azure-chatgpt"
   #version = "~> 2.2.0"
 
   # 01 common + RG #
@@ -35,8 +35,7 @@ module "private-chatgpt-openai" {
   virtual_network_name = "${var.virtual_network_name}${random_integer.number.result}"
   vnet_address_space   = var.vnet_address_space
   subnet_config        = var.subnet_config
-  rag_api_subnet_config = var.rag_api_subnet_config
-  rag_api_dns_zone_name = var.rag_api_dns_zone_name
+  
 
   # 03 keyvault (Solution Secrets)
   #==============================#
@@ -150,6 +149,8 @@ module "private-chatgpt-openai" {
   rag_api_app_image = var.rag_api_app_image
   rag_api_app_cpu = var.rag_api_app_cpu
   rag_api_app_memory = var.rag_api_app_memory
+  rag_api_subnet_config = var.rag_api_subnet_config
+  rag_api_dns_zone_name = var.rag_api_dns_zone_name
 
   # PostgreSQL Flexible Server
   pgsql_server_name            = "${var.pgsql_server_name}${random_integer.number.result}"
