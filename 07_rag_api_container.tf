@@ -40,7 +40,7 @@ resource "azurerm_container_app" "rag_api_app_name" {
         value = var.rag_api_app_embeddings_model
       }
       env {
-        name  = "RAG_AZURE_OPENAI_API_VERSION"
+        name  = "OPENAI_API_VERSION"
         value = var.rag_api_app_api_version
       }
       env {
