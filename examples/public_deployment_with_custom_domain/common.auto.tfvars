@@ -223,7 +223,7 @@ rag_api_subnet_config = {
   subnet_address_space = ["10.5.0.0/16"]
 }
 
-rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
+## rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
 
 # ... other new variable values ...
 
