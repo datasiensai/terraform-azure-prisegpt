@@ -69,10 +69,35 @@ resource "azurerm_private_dns_zone_virtual_network_link" "default" {
   resource_group_name   = azurerm_resource_group.az_openai_rg.name
 }
 
-# Add a private DNS zone for RAG API
+# Container Apps Environment
+resource "azapi_resource" "containerapp_environment" {
+  type      = "Microsoft.App/managedEnvironments@2022-03-01"
+  name      = "cae-${var.rag_api_app_name}"
+  parent_id = azurerm_resource_group.rg.id
+  location  = azurerm_resource_group.rg.location
+
+  body = jsonencode({
+    properties = {
+      appLogsConfiguration = {
+        destination = "log-analytics"
+        logAnalyticsConfiguration = {
+          customerId = azurerm_log_analytics_workspace.law.workspace_id
+          sharedKey  = azurerm_log_analytics_workspace.law.primary_shared_key
+        }
+      }
+      vnetConfiguration = {
+        infrastructureSubnetId = azurerm_subnet.rag_api_subnet.id
+        internal               = true
+      }
+    }
+  })
+
+  depends_on = [azurerm_subnet.rag_api_subnet]
+}
+
 resource "azurerm_private_dns_zone" "rag_api" {
   name                = jsondecode(azapi_resource.containerapp_environment.output).properties.defaultDomain
-  resource_group_name = azurerm_resource_group.az_openai_rg.name
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 # Link the RAG API private DNS zone to the virtual network

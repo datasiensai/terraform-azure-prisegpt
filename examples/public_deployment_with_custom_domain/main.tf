@@ -150,7 +150,7 @@ module "private-chatgpt-openai" {
   rag_api_app_cpu = var.rag_api_app_cpu
   rag_api_app_memory = var.rag_api_app_memory
   rag_api_subnet_config = var.rag_api_subnet_config
-  rag_api_dns_zone_name = var.rag_api_dns_zone_name
+  ## rag_api_dns_zone_name = var.rag_api_dns_zone_name
 
   # PostgreSQL Flexible Server
   pgsql_server_name            = "${var.pgsql_server_name}${random_integer.number.result}"
