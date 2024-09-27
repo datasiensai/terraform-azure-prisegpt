@@ -25,19 +25,19 @@ resource "azurerm_container_app" "rag_api_app_name" {
 
       env {
         name  = "RAG_AZURE_OPENAI_API_KEY"
-        value = "ccd98a3e7dc345e0905b4f26c2683173"
+        value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
       }
       env {
         name  = "RAG_AZURE_OPENAI_ENDPOINT"
-        value = azurerm_cognitive_account.az_openai.endpoint
+        value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
       }
       env {
         name  = "EMBEDDINGS_PROVIDER"
-        value = "azure"
+        value = var.libre_app_embeddings_provider
       }
       env {
         name  = "EMBEDDINGS_MODEL"
-        value = "text-embedding-3-large"
+        value = var.libre_app_embeddings_model
       }
       env {
         name  = "VECTOR_DB_TYPE"
