@@ -804,3 +804,15 @@ variable "database_extensions" {
   type        = list(string)
   description = "A list of PostgreSQL extensions to enable."
 }
+
+variable "libre_app_embeddings_model" {
+  type        = string
+  description = "The embeddings model to use for the LibreChat app"
+  default     = "text-embedding-3-large"
+}
+
+variable "libre_app_embeddings_provider" {
+  type        = string
+  description = "The embeddings provider to use for the LibreChat app"
+  default     = "azure"
+}
