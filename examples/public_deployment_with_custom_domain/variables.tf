@@ -763,14 +763,20 @@ variable "database_extensions" {
   description = "A list of PostgreSQL extensions to enable."
 }
 
-variable "libre_app_embeddings_model" {
+variable "rag_api_app_embeddings_model" {
   type        = string
   description = "The embeddings model to use for the LibreChat app"
   default     = "text-embedding-3-large"
 }
 
-variable "libre_app_embeddings_provider" {
+variable "rag_api_app_embeddings_provider" {
   type        = string
   description = "The embeddings provider to use for the LibreChat app"
   default     = "azure"
+}
+
+variable "rag_api_app_api_version" {
+  type        = string
+  description = "The API version to use for the RAG API"
+  default     = "2023-05-15"
 }

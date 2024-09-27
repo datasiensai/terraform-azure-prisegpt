@@ -33,11 +33,15 @@ resource "azurerm_container_app" "rag_api_app_name" {
       }
       env {
         name  = "EMBEDDINGS_PROVIDER"
-        value = var.libre_app_embeddings_provider
+        value = var.rag_api_app_embeddings_provider
       }
       env {
         name  = "EMBEDDINGS_MODEL"
-        value = var.libre_app_embeddings_model
+        value = var.rag_api_app_embeddings_model
+      }
+      env {
+        name  = "RAG_AZURE_OPENAI_API_VERSION"
+        value = var.rag_api_app_api_version
       }
       env {
         name  = "VECTOR_DB_TYPE"

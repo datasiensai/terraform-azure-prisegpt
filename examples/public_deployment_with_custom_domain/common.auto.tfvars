@@ -222,8 +222,9 @@ rag_api_subnet_config = {
   subnet_name          = "rag-api-subnet"
   subnet_address_space = ["10.5.0.0/16"]
 }
-libre_app_embeddings_model = "text-embedding-3-large"
-libre_app_embeddings_provider = "azure"
+rag_api_app_embeddings_model = "text-embedding-3-large"
+rag_api_app_embeddings_provider = "azure"
+rag_api_app_api_version = "2023-05-15"
 
 ## rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
 
