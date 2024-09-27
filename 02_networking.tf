@@ -70,8 +70,8 @@ resource "azurerm_private_dns_zone_virtual_network_link" "default" {
 }
 
 resource "azurerm_private_dns_zone" "rag_api" {
-  name                = jsondecode(azapi_resource.containerapp_environment.output).properties.defaultDomain
-  resource_group_name = azurerm_resource_group.rg.name
+  name                = azurerm_container_app_environment.rag_api_app.default_domain
+  resource_group_name = azurerm_resource_group.az_openai_rg.name
 }
 
 # Link the RAG API private DNS zone to the virtual network
