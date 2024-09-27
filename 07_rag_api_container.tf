@@ -94,3 +94,7 @@ output "rag_api_static_ip" {
 output "rag_api_default_domain" {
   value = azurerm_container_app_environment.rag_api_app.default_domain
 }
+
+output "rag_api_application_url" {
+  value = "https://${azurerm_container_app.rag_api_app_name.latest_revision_fqdn}"
+}

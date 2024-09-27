@@ -88,6 +88,9 @@ locals {
     LIMIT_MESSAGE_USER  = var.libre_app_violations.limit_message_user
     MESSAGE_USER_MAX    = var.libre_app_violations.message_user_max
     MESSAGE_USER_WINDOW = var.libre_app_violations.message_user_window
+
+    RAG_API_URL = "https://${azurerm_container_app.rag_api_app_name.latest_revision_fqdn}"
+
   }
 }
 
