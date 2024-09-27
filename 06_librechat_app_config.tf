@@ -94,8 +94,8 @@ locals {
     RAG_AZURE_OPENAI_API_KEY = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
     RAG_AZURE_OPENAI_ENDPOINT = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
     # New embeddings settings
-    EMBEDDINGS_MODEL = var.libre_app_embeddings_model
-    EMBEDDINGS_PROVIDER = var.libre_app_embeddings_provider
+    EMBEDDINGS_MODEL = var.rag_api_app_embeddings_model
+    EMBEDDINGS_PROVIDER = var.rag_api_app_embeddings_provider
 
   }
 }
