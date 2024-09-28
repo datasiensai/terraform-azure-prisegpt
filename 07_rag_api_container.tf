@@ -28,51 +28,51 @@ resource "azurerm_container_app" "rag_api_app_name" {
       memory = "2.0Gi"
 
       env {
-        name  = "RAG_AZURE_OPENAI_API_KEY"
-        value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+        name        = "RAG_AZURE_OPENAI_API_KEY"
+        secret_name = "openai-api-key"
       }
       env {
-        name  = "RAG_AZURE_OPENAI_ENDPOINT"
-        value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
+        name        = "RAG_AZURE_OPENAI_ENDPOINT"
+        secret_name = "openai-endpoint"
       }
       env {
-        name  = "EMBEDDINGS_PROVIDER"
+        name        = "EMBEDDINGS_PROVIDER"
         value = var.rag_api_app_embeddings_provider
       }
       env {
-        name  = "EMBEDDINGS_MODEL"
+        name        = "EMBEDDINGS_MODEL"
         value = var.rag_api_app_embeddings_model
       }
       env {
-        name  = "OPENAI_API_VERSION"
+        name        = "OPENAI_API_VERSION"
         value = var.rag_api_app_api_version
       }
       env {
-        name  = "VECTOR_DB_TYPE"
+        name        = "VECTOR_DB_TYPE"
         value = "pgvector"
       }
       env {
-        name  = "POSTGRES_DB"
+        name        = "POSTGRES_DB"
         value = "postgres"  # Default database name for PostgreSQL
       }
       env {
-        name  = "POSTGRES_USER"
-        value = azurerm_postgresql_flexible_server.default.administrator_login
+        name        = "POSTGRES_USER"
+        secret_name = "postgres-user"
       }
       env {
-        name  = "POSTGRES_PASSWORD"
-        value = azurerm_postgresql_flexible_server.default.administrator_password
+        name        = "POSTGRES_PASSWORD"
+        secret_name = "postgres-password"
       }
       env {
-        name  = "DB_HOST"
-        value = azurerm_postgresql_flexible_server.default.fqdn
+        name        = "DB_HOST"
+        secret_name = "postgres-host"
       }
       env {
-        name  = "DB_PORT"
+        name        = "DB_PORT"
         value = "5432"  # Default PostgreSQL port
       }
       env {
-        name  = "DEBUG_RAG_API"
+        name        = "DEBUG_RAG_API"
         value = "true"  # Set Debug to true
       }
     }
@@ -80,12 +80,12 @@ resource "azurerm_container_app" "rag_api_app_name" {
 
   secret {
     name  = "openai-api-key"
-    value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+    value = azurerm_cognitive_account.az_openai.primary_access_key
   }
 
   secret {
     name  = "openai-endpoint"
-    value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
+    value = azurerm_cognitive_account.az_openai.endpoint
   }
 
   secret {
