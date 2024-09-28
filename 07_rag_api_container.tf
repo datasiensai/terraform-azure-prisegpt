@@ -133,5 +133,5 @@ output "rag_api_default_domain" {
 }
 
 output "rag_api_application_url" {
-  value = "https://${azurerm_container_app.rag_api_app_name.latest_revision_fqdn}"
+  value = "https://${azurerm_container_app.rag_api_app_name.ingress[0].fqdn}"
 }
