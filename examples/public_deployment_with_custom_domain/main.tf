@@ -156,10 +156,10 @@ module "private-chatgpt-openai" {
   pgsql_server_name            = "${var.pgsql_server_name}${random_integer.number.result}"
   pgsql_version                = var.pgsql_version
   pgsql_administrator_login    = var.pgsql_administrator_login
-  pgsql_administrator_password = var.pgsql_administrator_password  // Add this line
+  #pgsql_administrator_password = var.pgsql_administrator_password  
   pgsql_sku_name               = var.pgsql_sku_name
   pgsql_storage_mb             = var.pgsql_storage_mb
   pgsql_backup_retention_days  = var.pgsql_backup_retention_days
-  database_extensions          = var.database_extensions  // Add this line
+  database_extensions          = var.database_extensions  
 
 }

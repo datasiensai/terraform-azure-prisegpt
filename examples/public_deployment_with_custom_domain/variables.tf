@@ -734,11 +734,6 @@ variable "pgsql_administrator_login" {
   type        = string
 }
 
-variable "pgsql_administrator_password" {
-  description = "Administrator password for PostgreSQL"
-  type        = string
-  sensitive   = true
-}
 
 variable "pgsql_storage_mb" {
   description = "Storage in MB for PostgreSQL"
