@@ -13,6 +13,10 @@ resource "azurerm_container_app" "rag_api_app_name" {
   container_app_environment_id = azurerm_container_app_environment.rag_api_app.id
   resource_group_name          = azurerm_resource_group.az_openai_rg.name
   revision_mode                = "Single"
+  # Enable System Assigned Managed Identity
+  identity {
+    type = "SystemAssigned"  # This enables a system-assigned identity
+  }
 
   template {
     min_replicas = 1
