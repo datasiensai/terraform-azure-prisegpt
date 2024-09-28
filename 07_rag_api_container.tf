@@ -78,6 +78,31 @@ resource "azurerm_container_app" "rag_api_app_name" {
     }
   }
 
+  secret {
+    name  = "openai-api-key"
+    value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+  }
+
+  secret {
+    name  = "openai-endpoint"
+    value = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
+  }
+
+  secret {
+    name  = "postgres-user"
+    value = azurerm_postgresql_flexible_server.default.administrator_login
+  }
+
+  secret {
+    name  = "postgres-password"
+    value = azurerm_postgresql_flexible_server.default.administrator_password
+  }
+
+  secret {
+    name  = "postgres-host"
+    value = azurerm_postgresql_flexible_server.default.fqdn
+  }
+
   ingress {
     allow_insecure_connections = false
     external_enabled           = true
