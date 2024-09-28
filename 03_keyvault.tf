@@ -29,7 +29,7 @@ resource "azurerm_role_assignment" "kv_role_assigment" {
 resource "azurerm_role_assignment" "kv_role_assignment_container_app" {
   scope                = azurerm_key_vault.az_openai_kv.id
   role_definition_name = "Key Vault Secrets User"  # Role that allows reading secrets from Key Vault
-  principal_id         = azurerm_container_app.rag_api_app_name.identity.principal_id
+  principal_id         = azurerm_container_app.rag_api_app_name.identity[0].principal_id  # Index the identity object
 
   depends_on = [
     azurerm_container_app.rag_api_app_name,  # Ensure the container app and its identity exist
