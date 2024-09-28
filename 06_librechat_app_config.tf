@@ -90,7 +90,7 @@ locals {
     MESSAGE_USER_WINDOW = var.libre_app_violations.message_user_window
 
     # New settings for RAG API
-    RAG_API_URL = azurerm_container_app.rag_api_app_name.ingress[0].fqdn
+    RAG_API_URL = azurerm_container_app.rag_api_app_name.rag_api_application_url
     RAG_AZURE_OPENAI_API_KEY = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
     RAG_AZURE_OPENAI_ENDPOINT = "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_endpoint.id})"
     # New embeddings settings
