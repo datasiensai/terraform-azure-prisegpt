@@ -12,7 +12,7 @@ resource "azurerm_container_app" "rag_api_app_name" {
   name                         = "ca-${var.rag_api_app_name}"
   container_app_environment_id = azurerm_container_app_environment.rag_api_app.id
   resource_group_name          = azurerm_resource_group.az_openai_rg.name
-  revision_mode                = "Multiple"
+  revision_mode                = "Single"
 
   template {
     min_replicas = 1
@@ -66,6 +66,10 @@ resource "azurerm_container_app" "rag_api_app_name" {
       env {
         name  = "DB_PORT"
         value = "5432"  # Default PostgreSQL port
+      }
+      env {
+        name  = "DEBUG_RAG_API"
+        value = "true"  # Set Debug to true
       }
     }
   }
