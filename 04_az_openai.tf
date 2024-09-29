@@ -13,6 +13,7 @@ resource "azurerm_cognitive_account" "az_openai" {
   public_network_access_enabled      = var.oai_public_network_access_enabled
   tags                               = var.tags
 
+  // Configure customer managed key if provided
   dynamic "customer_managed_key" {
     for_each = var.oai_customer_managed_key != null ? [var.oai_customer_managed_key] : []
     content {
@@ -21,6 +22,7 @@ resource "azurerm_cognitive_account" "az_openai" {
     }
   }
 
+  // Configure the identity block if oai_identity is provided
   dynamic "identity" {
     for_each = var.oai_identity != null ? [var.oai_identity] : []
     content {
@@ -29,12 +31,14 @@ resource "azurerm_cognitive_account" "az_openai" {
     }
   }
 
+  // Configure network access control lists (ACLs) if provided
   dynamic "network_acls" {
     for_each = var.oai_network_acls != null ? [var.oai_network_acls] : []
     content {
       default_action = network_acls.value.default_action
       ip_rules       = network_acls.value.ip_rules
 
+      // Configure virtual network rules if provided
       dynamic "virtual_network_rules" {
         for_each = network_acls.value.virtual_network_rules != null ? network_acls.value.virtual_network_rules : []
         content {
@@ -45,6 +49,7 @@ resource "azurerm_cognitive_account" "az_openai" {
     }
   }
 
+  // Configure storage accounts if provided
   dynamic "storage" {
     for_each = var.oai_storage
     content {

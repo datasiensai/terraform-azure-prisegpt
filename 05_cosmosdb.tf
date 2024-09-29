@@ -1,4 +1,4 @@
-# Create CosmosDB Account running MongoDB
+# Create CosmosDB Serverless running MongoDB
 resource "azurerm_cosmosdb_account" "az_openai_mongodb" {
   name                       = var.cosmosdb_name
   resource_group_name        = azurerm_resource_group.az_openai_rg.name
@@ -46,13 +46,7 @@ resource "azurerm_cosmosdb_account" "az_openai_mongodb" {
   }
 }
 
-# Create a MongoDB database
-resource "azurerm_cosmosdb_mongo_database" "az_openai_mongodb_db" {
-  name                = "librechat"
-  resource_group_name = azurerm_resource_group.az_openai_rg.name
-  account_name        = azurerm_cosmosdb_account.az_openai_mongodb.name
-
-}
+## MongoDB Database named test will be created by LibreChat App
 
 ### Save MongoDB URI details to Key Vault for consumption by other services (e.g. LibreChat App)
 resource "azurerm_key_vault_secret" "openai_cosmos_uri" {

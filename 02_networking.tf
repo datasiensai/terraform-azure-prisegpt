@@ -8,6 +8,7 @@ resource "azurerm_virtual_network" "az_openai_vnet" {
 }
 
 # Azure Virtual Network Subnets
+## Subnet for Librechat and Cosmos DB
 resource "azurerm_subnet" "az_openai_subnet" {
   resource_group_name                           = azurerm_resource_group.az_openai_rg.name
   virtual_network_name                          = azurerm_virtual_network.az_openai_vnet.name
@@ -31,7 +32,7 @@ resource "azurerm_subnet" "az_openai_subnet" {
   }
 }
 
-# New subnet for RAG API
+# Subnet for RAG API
 resource "azurerm_subnet" "rag_api_subnet" {
   name                 = var.rag_api_subnet_config.subnet_name
   resource_group_name  = azurerm_resource_group.az_openai_rg.name
@@ -39,7 +40,7 @@ resource "azurerm_subnet" "rag_api_subnet" {
   address_prefixes     = var.rag_api_subnet_config.subnet_address_space
 }
 
-# New delegated subnet for PostgreSQL database
+# Subnet for PostgreSQL database with delegation
 resource "azurerm_subnet" "pgsql_subnet" {
   name                 = "pgsql-subnet"
   resource_group_name  = azurerm_resource_group.az_openai_rg.name
@@ -55,13 +56,13 @@ resource "azurerm_subnet" "pgsql_subnet" {
   }
 }
 
-# Add a private DNS zone
+# Add a private DNS zone for PostgreSQL Flexible Server
 resource "azurerm_private_dns_zone" "default" {
   name                = "${var.pgsql_server_name}.private.postgres.database.azure.com"
   resource_group_name = azurerm_resource_group.az_openai_rg.name
 }
 
-# Link the private DNS zone to the virtual network
+# Link the private DNS zone to the virtual network for PostgreSQL Flexible Server
 resource "azurerm_private_dns_zone_virtual_network_link" "default" {
   name                  = "${var.pgsql_server_name}-pdz-vnet-link"
   private_dns_zone_name = azurerm_private_dns_zone.default.name
@@ -69,6 +70,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "default" {
   resource_group_name   = azurerm_resource_group.az_openai_rg.name
 }
 
+# Add a private DNS zone for RAG API container app
 resource "azurerm_private_dns_zone" "rag_api" {
   name                = azurerm_container_app_environment.rag_api_app.default_domain
   resource_group_name = azurerm_resource_group.az_openai_rg.name
@@ -83,7 +85,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "rag_api" {
   registration_enabled  = true
 }
 
-# Add A record for RAG API
+# Add A record for RAG API container app
 resource "azurerm_private_dns_a_record" "rag_api" {
   name                = "*"
   zone_name           = azurerm_private_dns_zone.rag_api.name

@@ -1,46 +1,26 @@
-[![Manual-Tests-and-Release](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/actions/workflows/manual-test-release.yml/badge.svg)](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/actions/workflows/manual-test-release.yml) [![Automated-Dependency-Tests-and-Release](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/actions/workflows/dependency-tests.yml/badge.svg)](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/actions/workflows/dependency-tests.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
-
 # Module: Azure OpenAI Private ChatGPT
 
-## Current Version 2.x
+## Current Version 1.x
 
-Version **2.x** a complete rewrite of the module and is not backwards compatible with version **1.x.**  
-New integrations and features have been added to the module to use the latest **Azure OpenAI** services and features such as `GPT-4-1106`, `GPT-4-Vision` and `DALL-E-3`. A new ChatBot UI / [LibreChat](https://docs.librechat.ai/index.html) has been added to the module to provide a complete solution.  
-
-[![LIBRE](https://img.youtube.com/vi/pNIOs1ovsXw/0.jpg)](https://www.youtube.com/watch?v=pNIOs1ovsXw)  
+Version **1.x.** LibreChat on Azure with following features
+- Chat History (with CosmosDB)
+- Chat with Files (with Azure Database for PostgreSQL Flexible Server)
+- Artifacts similar to Claude to render code directly in chat window
 
 ## Coming next - Feature development
 
-### v2.7.x (in development)
+### v1.1.x (in development)
 
-- [ ] Privatise solution with Private endpoint support
-- [ ] Front Door and WAF support for public entrypoint
-- [ ] Azure AI Search/MeiliSearch Integration
-- [ ] Add additional support for [Azure OpenAI DALL-E-3](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#dall-e-models-preview/?wt.mc_id=DT-MVP-5004771)
+- [ ] Support for Models available on demand via Azure AI Studio
 
-### v2.6.x (current)
 
-- [x] AzureRM provider v4.x.x support added
+### v1.0.x (current)
 
-### v2.3.x, v2.4.x, v2.5.x
+- [x] LibreChat on Azure with following features
+- [x] Chat History (with CosmosDB)
+- [x] Chat with Files (with Azure Database for PostgreSQL Flexible Server)
+- [x] Artifacts similar to Claude to render code directly in chat window
 
-- [x] Dependency updates and tests
-
-### v2.2.x
-
-- [x] Added User Violations Support
-- [x] Updated documentation and examples
-- [x] Added module outputs
-
-### v2.1.x
-
-- [x] Custom domain support with managed certificates
-
-## Legacy Version 1.x
-
-**NOTE:** Legacy version **1.x** can be found in the legacy branch **[here](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/tree/legacy-v1)**  
-
-**[Version 1.x Documentation](https://github.com/Pwd9000-ML/terraform-azurerm-openai-private-chatgpt/blob/legacy-v1/README.md)**  
 
 ## Introduction
 
@@ -91,7 +71,7 @@ If you encounter any issues or have any questions about this terraform module, p
 
 ## Acknowledgements
 
-This terraform module was developed by **Marcel Lupo** as part of a project to explore the capabilities of Azure OpenAI models. We'd like to thank the OpenAI and Microsoft team for their incredible work and ongoing support of the AI community. 
+This terraform module was developed by **Biju Krishnan** as part of a project to explore the capabilities of Azure OpenAI models. We'd like to thank the OpenAI and Microsoft team for their incredible work and ongoing support of the AI community. 
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
