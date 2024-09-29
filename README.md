@@ -47,19 +47,19 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
 
 ### Artifacts Like Claude
 
-![Artifacts Like Claude](https://github.com/datasiensai/prisegpt/raw/main/assets/artifacts_like_claude.png)
+![Artifacts Like Claude](https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png)
 
 ### Chat with Files
 
-![Chat with Files](https://github.com/datasiensai/prisegpt/raw/main/assets/chat_with_files.png)
+![Chat with Files](https://github.com/datasiensai/prisegpt/blob/main/assets/chat_with_files.png)
 
 ### Create and Share Prompt Templates
 
-![Create and Share Prompt Templates](https://github.com/datasiensai/prisegpt/raw/main/assets/create_and_share_prompt_templates.png)
+![Create and Share Prompt Templates](https://github.com/datasiensai/prisegpt/blob/main/assets/create_and_share_prompt_templates.png)
 
 ### Compare output from different models
 
-![Compare output from different models](https://github.com/datasiensai/prisegpt/raw/main/assets/compare_output_from_different_models.png)
+![Compare output from different models](https://github.com/datasiensai/prisegpt/blob/main/assets/compare_output_from_different_models.png)
 
 ## Contributing
 
