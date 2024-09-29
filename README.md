@@ -45,21 +45,24 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
 
 ## Screens
 
-### Artifacts Like Claude
-
-<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png" alt="Artifacts Like Claude" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
-
-### Chat with Files
-
-<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/FileChat.png" alt="Chat with Files" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
-
-### Create and Share Prompt Templates
-
-<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
-
-### Compare output from different models
-
-<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
+<table>
+  <tr>
+    <td><strong>Artifacts Like Claude</strong></td>
+    <td><strong>Chat with Files</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png" alt="Artifacts Like Claude" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/FileChat.png" alt="Chat with Files" style="max-width: 100%; height: auto;"></td>
+  </tr>
+  <tr>
+    <td><strong>Create and Share Prompt Templates</strong></td>
+    <td><strong>Compare output from different models</strong></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="max-width: 100%; height: auto;"></td>
+  </tr>
+</table>
 
 ## Contributing
 
