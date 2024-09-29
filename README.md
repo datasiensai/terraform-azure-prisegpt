@@ -1,4 +1,4 @@
-![Banner](https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/Artifacts.png)
+![Banner](https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/logos/prisegpt_banner.png)
 
 # Module: PriseGPT - ChatGPT for the Enterprise
 
