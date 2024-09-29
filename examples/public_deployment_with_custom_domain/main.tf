@@ -21,8 +21,7 @@ resource "random_integer" "number" {
 }
 
 module "private-chatgpt-openai" {
-  source  = "git@github.com:bijucyborg/tf-private-azure-chatgpt"
-  #version = "~> 2.2.0"
+  source  = "datasiensai/prisegpt/azure"
 
   # 01 common + RG #
   #================#
