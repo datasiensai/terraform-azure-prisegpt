@@ -37,7 +37,7 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
 
 ## Diagram
 
-coming soon...
+[Secure Deployment with Custom Domain](https://github.com/datasiensai/prisegpt/blob/main/assets/PriseGPT_Azure_Architecture.jpg)
 
 ## Examples
 
