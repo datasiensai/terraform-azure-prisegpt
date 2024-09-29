@@ -92,9 +92,10 @@ This terraform module is licensed under the MIT License. See the LICENSE file fo
 
 ## Support
 
-Enteprise support is available for as low as 30 USD per user or one time installation fee.
+Enterprise support is available for as low as 30 USD per user or a one-time installation fee.
 Please enter your details via the form below and we will get in touch.
-https://datasiens.outgrow.us/prisegpt
+
+👉 [Get Enterprise Support](https://datasiens.outgrow.us/prisegpt)
 
 ## Acknowledgements
 
