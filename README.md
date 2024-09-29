@@ -35,9 +35,9 @@ For a deeper dive, refer to this [Microsoft Learn article](https://learn.microso
 
 While Azure OpenAI does come with a cost, it's highly affordable—often, a conversation costs under 10 cents. You can review Azure [OpenAI's pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/) details here.
 
-## Diagram
+## Architecture Diagram
 
-[Secure Deployment with Custom Domain](https://github.com/datasiensai/prisegpt/blob/main/assets/PriseGPT_Azure_Architecture.jpg)
+![PriseGPT Azure Architecture](https://raw.githubusercontent.com/datasiensai/prisegpt/main/assets/PriseGPT_Azure_Architecture.jpg)
 
 ## Examples
 
