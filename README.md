@@ -24,16 +24,23 @@ Version **1.x.** LibreChat on Azure with following features
 
 ## Introduction
 
-Under **OpenAI's** terms when using the public version of **ChatGPT**, any questions you pose—referred to as **"prompts"**—may contribute to the further training of OpenAI's Large Language Model (LLM). Given this, it's crucial to ask: Are you comfortable with this precious data flow leaving your organization? If you're a decision-maker or hold responsibility over your organization's security measures, what steps are you taking to ensure proprietary information remains confidential?  
+PriseGPT is a terraform module designed to provide enterprises with a ChatGPT-like solution within their Azure Virtual Private Cloud (VPC). It offers several key advantages:
 
-An effective solution lies in utilising a hosted version of the popular LLM on **Azure OpenAI**. While there are numerous advantages to Azure OpenAI, I'd like to spotlight two:
+- **Easy Maintenance**: Utilizing only containers and managed services, PriseGPT eliminates the need for virtual machines, simplifying maintenance and reducing operational overhead.
 
-- **Data Privacy**: By hosting OpenAI's models on Azure, your prompts will never serve as a source for training the LLM. It's simply a self-contained version running on Azure tailored for your use.
+- **Private Network**: Experience ChatGPT-like features securely within your Azure virtual private network, ensuring that sensitive conversations remain within your organization's infrastructure.
 
-- **Enhanced Security**: Azure OpenAI offers robust security measures, from the capability to secure specific endpoints to intricate role-based access controls.
-For a deeper dive, refer to this [Microsoft Learn article](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview/?wt.mc_id=DT-MVP-5004771).  
+- **Data Privacy**: Leverage Microsoft's data guarantees and prevent your corporate data from being used for training. Unlike OpenAI's public ChatGPT, where prompts may contribute to model training, PriseGPT ensures your data remains confidential.
 
-While Azure OpenAI does come with a cost, it's highly affordable—often, a conversation costs under 10 cents. You can review Azure [OpenAI's pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/) details here.
+- **Pay as You Grow**: Take advantage of your existing Azure credits and discounts to manage costs effectively. Scale your enterprise ChatGPT requirements in line with your usage and budget.
+
+- **Unlimited Scalability**: Both the application and database components can be scaled infinitely as your user base grows, ensuring performance and availability at any scale.
+
+- **White Labelled**: Customize the interface with your logos, colors, and corporate banners to maintain brand consistency and provide a seamless experience for your users.
+
+By hosting OpenAI's models on Azure through PriseGPT, you gain enhanced security measures, from securing specific endpoints to implementing intricate role-based access controls. This solution offers a cost-effective approach to enterprise-grade AI capabilities, with conversation costs often under 10 cents.
+
+For a deeper understanding of Azure OpenAI's capabilities, refer to this [Microsoft Learn article](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview/?wt.mc_id=DT-MVP-5004771). You can also review Azure [OpenAI's pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/) details for more information on costs.
 
 ## Architecture Diagram
 
