@@ -47,19 +47,19 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
 
 ### Artifacts Like Claude
 
-![Artifacts Like Claude](https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png)
+<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png" alt="Artifacts Like Claude" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
 
 ### Chat with Files
 
-![Chat with Files](https://github.com/datasiensai/prisegpt/blob/main/assets/FileChat.png)
+<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/FileChat.png" alt="Chat with Files" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
 
 ### Create and Share Prompt Templates
 
-![Create and Share Prompt Templates](https://github.com/datasiensai/prisegpt/blob/main/assets/PromptTemplates.png)
+<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
 
 ### Compare output from different models
 
-![Compare output from different models](https://github.com/datasiensai/prisegpt/blob/main/assets/ModelComparison.png)
+<img src="https://github.com/datasiensai/prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="border: 2px solid #ddd; border-radius: 5px; padding: 5px;">
 
 ## Contributing
 
