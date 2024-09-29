@@ -27,6 +27,7 @@ Version **1.x.** LibreChat on Azure with following features
 PriseGPT is a terraform module designed to provide enterprises with a ChatGPT-like solution within their Azure Virtual Private Cloud (VPC). It offers several key advantages:
 
 - **Easy Maintenance**: Utilizing only containers and managed services, PriseGPT eliminates the need for virtual machines, simplifying maintenance and reducing operational overhead.
+Not needing to patch virtual machines or host your own models and vector databases reduces your maintenance overhead by over 80%.
 
 - **Private Network**: Experience ChatGPT-like features securely within your Azure virtual private network, ensuring that sensitive conversations remain within your organization's infrastructure.
 
