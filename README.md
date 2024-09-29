@@ -38,7 +38,7 @@ PriseGPT is a terraform module designed to provide enterprises with a ChatGPT-li
 
 - **White Labelled**: Customize the interface with your logos, colors, and corporate banners to maintain brand consistency and provide a seamless experience for your users.
 
-By hosting OpenAI's models on Azure through PriseGPT, you gain enhanced security measures, from securing specific endpoints to implementing intricate role-based access controls. This solution offers a cost-effective approach to enterprise-grade AI capabilities, with conversation costs often under 10 cents.
+- **Commercial Support**: Get commercial support, maintenance and updates for as low as 30 USD per user.
 
 For a deeper understanding of Azure OpenAI's capabilities, refer to this [Microsoft Learn article](https://learn.microsoft.com/en-us/azure/ai-services/openai/overview/?wt.mc_id=DT-MVP-5004771). You can also review Azure [OpenAI's pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/) details for more information on costs.
 
