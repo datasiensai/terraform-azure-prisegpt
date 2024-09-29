@@ -1,26 +1,6 @@
+![Banner](https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/Artifacts.png)
+
 # Module: PriseGPT - ChatGPT for the Enterprise
-
-## Current Version 1.x
-
-Version **1.x.** LibreChat on Azure with following features
-- Chat History (with CosmosDB)
-- Chat with Files (with Azure Database for PostgreSQL Flexible Server)
-- Artifacts similar to Claude to render code directly in chat window
-
-## Coming next - Feature development
-
-### v1.1.0 (in development)
-
-- [ ] Support for Models available on demand via Azure AI Studio
-
-
-### v1.0.0 (current)
-
-- [x] LibreChat on Azure with following features
-- [x] Chat History (with CosmosDB)
-- [x] Chat with Files (with Azure Database for PostgreSQL Flexible Server)
-- [x] Artifacts similar to Claude to render code directly in chat window
-
 
 ## Introduction
 
@@ -46,6 +26,28 @@ For a deeper understanding of Azure OpenAI's capabilities, refer to this [Micros
 ## Architecture Diagram
 
 ![PriseGPT Azure Architecture](https://raw.githubusercontent.com/datasiensai/terraform-azure-prisegpt/main/assets/PriseGPT_Azure_Architecture.jpg)
+
+## Current Version 1.x
+
+Version **1.x.** LibreChat on Azure with following features
+- Chat History (with CosmosDB)
+- Chat with Files (with Azure Database for PostgreSQL Flexible Server)
+- Artifacts similar to Claude to render code directly in chat window
+
+## Coming next - Feature development
+
+### v1.1.0 (in development)
+
+- [ ] Support for Models available on demand via Azure AI Studio
+
+
+### v1.0.0 (current)
+
+- [x] LibreChat on Azure with following features
+- [x] Chat History (with CosmosDB)
+- [x] Chat with Files (with Azure Database for PostgreSQL Flexible Server)
+- [x] Artifacts similar to Claude to render code directly in chat window
+
 
 ## Examples
 
