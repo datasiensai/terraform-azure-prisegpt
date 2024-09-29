@@ -1,16 +1,12 @@
-### 01 common + RG ###
+# ##################################################
+# # VARIABLES                                      #
+# ##################################################
+### 01 common + Resource Group ###
 variable "location" {
   type        = string
   default     = "uksouth"
   description = "Azure region where resources will be hosted."
 }
-
-variable "subscription_id" {
-  type        = string
-  description = "The Subscription ID which should be used."
-}
-
-# ... rest of your existing  ...
 
 variable "tags" {
   type        = map(string)
@@ -20,11 +16,11 @@ variable "tags" {
 
 variable "resource_group_name" {
   type        = string
-  description = "Name of the resource group to create where the cognitive account OpenAI service is hosted."
+  description = "Name of the resource group to create the OpenAI service / or where an existing service is hosted."
   nullable    = false
 }
 
-### 02 networking ###
+### 02 Networking ###
 variable "virtual_network_name" {
   type        = string
   default     = "openai-vnet-9000"
@@ -51,7 +47,7 @@ variable "subnet_config" {
   })
   default = {
     subnet_name                                   = "app-cosmos-sub"
-    subnet_address_space                          = ["10.4.0.0/24"]
+    subnet_address_space                          = ["10.4.0.0/16"]
     service_endpoints                             = ["Microsoft.AzureCosmosDB", "Microsoft.Web"]
     private_endpoint_network_policies_enabled     = "Enabled"
     private_link_service_network_policies_enabled = false
@@ -72,10 +68,6 @@ variable "rag_api_subnet_config" {
     subnet_name          = string
     subnet_address_space = list(string)
   })
-  default = {
-    subnet_name          = "rag-api-subnet"
-    subnet_address_space = ["10.5.0.0/16"]
-  }
   description = "Configuration for the RAG API subnet"
 }
 
@@ -117,7 +109,7 @@ variable "kv_fw_network_subnet_ids" {
   default     = null
 }
 
-### 04 openai service ###
+### 04 OpenAI service ###
 variable "oai_account_name" {
   type        = string
   default     = "az-openai-account"
@@ -146,6 +138,7 @@ variable "oai_fqdns" {
   type        = list(string)
   default     = []
   description = "A list of FQDNs to be used for token-based authentication. Changing this forces a new resource to be created."
+
 }
 
 variable "oai_local_auth_enabled" {
@@ -162,7 +155,7 @@ variable "oai_outbound_network_access_restricted" {
 
 variable "oai_public_network_access_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Whether or not public network access is enabled. Defaults to `false`."
 }
 
@@ -240,7 +233,6 @@ variable "oai_model_deployment" {
     model_format    = string
     model_version   = string
     sku_name        = string
-    scale_type      = string  # Added scale_type
     sku_tier        = optional(string)
     sku_size        = optional(number)
     sku_family      = optional(string)
@@ -264,7 +256,6 @@ variable "oai_model_deployment" {
           sku_capacity = (Optional) Tokens-per-Minute (TPM). If the SKU supports sku out/in then the capacity integer should be included. If sku out/in is not possible for the resource this may be omitted. Default value is 1. Changing this forces a new resource to be created.
         }
         rai_policy_name = (Optional) The name of RAI policy. Changing this forces a new resource to be created.
-        scale_type       = (Required) The scaling type for the deployment. Possible values: "standard", "auto", etc.
       }))
   DESCRIPTION
   nullable    = false
@@ -357,12 +348,12 @@ variable "cosmosdb_public_network_access_enabled" {
   default     = true
 }
 
-### 06 app services (librechat app + meilisearch) ###
-# App service Plan
+### 06 LibreChat App Services ###
+# App Service Plan
 variable "app_service_name" {
   type        = string
   description = "Name of the Linux App Service Plan."
-  default     = "openai-asp9000"
+  default     = "openaiasp9000"
 }
 
 variable "app_service_sku_name" {
@@ -370,6 +361,28 @@ variable "app_service_sku_name" {
   description = "The SKU name of the App Service Plan."
   default     = "B1"
 }
+
+#TODO
+# Meilisearch App Service
+# variable "meilisearch_app_name" {
+#   type        = string
+#   description = "Name of the meilisearch App Service."
+#   default     = "meilisearchapp9000"
+
+# }
+
+# variable "meilisearch_app_virtual_network_subnet_id" {
+#   type        = string
+#   description = "The ID of the subnet to deploy the meilisearch App Service in."
+#   default     = null
+# }
+
+# variable "meilisearch_app_key" {
+#   type        = string
+#   description = "The Meilisearch API Key to use for authentication."
+#   default     = null
+#   sensitive   = true
+# }
 
 # LibreChat App Service
 variable "libre_app_name" {
@@ -402,7 +415,7 @@ variable "libre_app_allowed_subnets" {
     {
       virtual_network_subnet_id = "subnet_id1"
       priority                  = 200
-      name                      = "subnet-access-rule1"
+      name                      = "subnet-access-rule1" # "Allow from LibreChat app subnet and hosted services e.g. cosmosdb, meilisearch etc."
       action                    = "Allow"
     }
   ]
@@ -458,6 +471,7 @@ variable "libre_app_docker_image" {
   default     = "ghcr.io/danny-avila/librechat-dev-api:latest"
 }
 
+
 variable "libre_app_mongo_uri" {
   type        = string
   description = "The MongoDB Connection String to connect to."
@@ -495,6 +509,12 @@ variable "libre_app_endpoints" {
   type        = string
   description = "endpoints and models selection. E.g. 'openAI,azureOpenAI,bingAI,chatGPTBrowser,google,gptPlugins,anthropic'"
   default     = "azureOpenAI"
+}
+
+variable "libre_app_plugin_models" {
+  type        = string
+  description = "Plugin Models such as gpt-4o, gpt-3.5-turbo, claude-3.5-sonnet etc."
+  default     = "gpt-4o"
 }
 
 # Azure OpenAI
@@ -540,6 +560,11 @@ variable "libre_app_az_oai_dall3_deployment_name" {
   description = "Azure OpenAI DALL-E Deployment Name"
   default     = "dall-e-3"
 }
+variable "libre_app_az_oai_title_convo_model" {
+  type        = string
+  description = "Azure OpenAI Title Convo Model"
+  default     = "gpt-4o-mini"
+}
 
 # Plugins
 variable "libre_app_debug_plugins" {
@@ -562,6 +587,19 @@ variable "libre_app_plugins_creds_iv" {
   sensitive   = true
 }
 
+# variable "libre_app_plugin_models" {
+#   type        = string
+#   description = "Libre App Plugin Models e.g. 'gpt-4,dall-e-3'"
+#   default     = "gpt-4,dall-e-3"
+# }
+
+# variable "libre_app_plugins_use_azure" {
+#   type        = bool
+#   description = "Libre App Plugins Use Azure, required for Azure OpenAI Plugins e.g. 'dall-e-3'"
+#   default     = true
+# }
+
+#TODO
 # Search
 variable "libre_app_enable_meilisearch" {
   type        = bool
@@ -569,12 +607,24 @@ variable "libre_app_enable_meilisearch" {
   default     = false
 }
 
-variable "libre_app_meili_key" {
-  type        = string
-  description = "Meilisearch API Key"
-  default     = null
-  sensitive   = true
-}
+# variable "libre_app_disable_meilisearch_analytics" {
+#   type        = bool
+#   description = "Disable Meilisearch Analytics"
+#   default     = true
+# }
+
+# variable "libre_app_meili_host" {
+#   type        = string
+#   description = "For the API server to connect to the search server. E.g. https://meilisearch.example.com"
+#   default     = null
+# }
+
+# variable "libre_app_meili_key" {
+#   type        = string
+#   description = "Meilisearch API Key"
+#   default     = null
+#   sensitive   = true
+# }
 
 # User Registration
 variable "libre_app_allow_email_login" {
@@ -621,7 +671,8 @@ variable "libre_app_jwt_refresh_secret" {
   sensitive   = true
 }
 
-# Violations
+# Violations 
+
 variable "libre_app_violations" {
   description = "Configuration for violations"
   type = object({
@@ -671,6 +722,7 @@ variable "libre_app_violations" {
 }
 
 # Custom Domain and Managed Certificate (Optional)
+
 variable "libre_app_custom_domain_create" {
   type        = bool
   description = "Create a custom domain and managed certificate for the App Service."
@@ -696,8 +748,9 @@ variable "dns_resource_group_name" {
 }
 
 variable "rag_api_app_name" {
-  description = "Name of the RAG API Container App"
   type        = string
+  description = "Name of the RAG API app"
+  default     = "rag-api"
 }
 
 variable "rag_api_app_image" {
@@ -733,7 +786,6 @@ variable "pgsql_administrator_login" {
   description = "Administrator login for PostgreSQL"
   type        = string
 }
-
 
 variable "pgsql_storage_mb" {
   description = "Storage in MB for PostgreSQL"

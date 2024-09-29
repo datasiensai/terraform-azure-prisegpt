@@ -511,6 +511,12 @@ variable "libre_app_endpoints" {
   default     = "azureOpenAI"
 }
 
+variable "libre_app_plugin_models" {
+  type        = string
+  description = "Plugin Models such as gpt-4o, gpt-3.5-turbo, claude-3.5-sonnet etc."
+  default     = "gpt-4o"
+}
+
 # Azure OpenAI
 variable "libre_app_az_oai_api_key" {
   type        = string
@@ -553,6 +559,11 @@ variable "libre_app_az_oai_dall3_deployment_name" {
   type        = string
   description = "Azure OpenAI DALL-E Deployment Name"
   default     = "dall-e-3"
+}
+variable "libre_app_az_oai_title_convo_model" {
+  type        = string
+  description = "Azure OpenAI Title Convo Model"
+  default     = "gpt-4o-mini"
 }
 
 # Plugins

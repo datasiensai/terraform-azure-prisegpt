@@ -26,10 +26,13 @@ locals {
 
     ### Azure OpenAI ###
     AZURE_API_KEY                      = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+    OPENAI_API_KEY                     = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
     AZURE_OPENAI_MODELS                = var.libre_app_az_oai_models
     AZURE_USE_MODEL_AS_DEPLOYMENT_NAME = var.libre_app_az_oai_use_model_as_deployment_name
     AZURE_OPENAI_API_INSTANCE_NAME     = var.libre_app_az_oai_instance_name != null ? var.libre_app_az_oai_instance_name : split("//", split(".", azurerm_cognitive_account.az_openai.endpoint)[0])[1]
     AZURE_OPENAI_API_VERSION           = var.libre_app_az_oai_api_version
+    TITLE_CONVO                        = true
+    OPENAI_TITLE_MODEL                  = var.libre_app_az_oai_title_convo_model
 
     ### Plugins ###
     # NOTE: You need a fixed key and IV. a 32-byte key (64 characters in hex) and 16-byte IV (32 characters in hex) 
@@ -44,7 +47,11 @@ locals {
     DALLE3_AZURE_API_VERSION = var.libre_app_az_oai_dall3_api_version
     DALLE3_BASEURL           = "https://${var.libre_app_az_oai_instance_name != null ? var.libre_app_az_oai_instance_name : split("//", split(".", azurerm_cognitive_account.az_openai.endpoint)[0])[1]}.openai.azure.com/openai/deployments/${var.libre_app_az_oai_dall3_deployment_name}/"
     DALLE_API_KEY            = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
-
+    DALLE3_API_KEY           = var.libre_app_az_oai_api_key != null ? var.libre_app_az_oai_api_key : "@Microsoft.KeyVault(SecretUri=${azurerm_key_vault_secret.openai_primary_key.id})"
+    ENDPOINTS               = var.libre_app_endpoints
+    PLUGIN_MODELS           = var.libre_app_plugin_models
+    PLUGINS_USE_AZURE       = true
+    
     ### Search ###
     SEARCH = var.libre_app_enable_meilisearch
     #  MEILI_NO_ANALYTICS = var.libre_app_disable_meilisearch_analytics

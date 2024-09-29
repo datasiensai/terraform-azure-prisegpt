@@ -72,6 +72,14 @@ Version **1.x.** LibreChat on Azure with following features
     <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="max-width: 100%; height: auto;"></td>
     <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="max-width: 100%; height: auto;"></td>
   </tr>
+  <tr>
+    <td><strong>DALL-E Image Generation</strong></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/DALL-E.png" alt="DALL-E Image Generation" style="max-width: 100%; height: auto;"></td>
+    <td></td>
+  </tr>
 </table>
 
 ## Contributing

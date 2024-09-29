@@ -122,7 +122,7 @@ cosmosdb_public_network_access_enabled     = true
 ### 06 app services (librechat app + meilisearch) ###
 # App Service Plan
 app_service_name     = "prisegptasp"
-app_service_sku_name = "B1"
+app_service_sku_name = "B2"
 
 # LibreChat App Service
 libre_app_name                          = "prisegptchatapp"
@@ -131,7 +131,7 @@ libre_app_virtual_network_subnet_id     = null # Access is allowed on the built 
 libre_app_allowed_subnets               = null # Add any other subnet ids to allow access to the app service (optional)
 libre_app_allowed_ip_addresses = [
   {
-    ip_address = "0.0.0.0/0" # Allow all IPs (for test purposes)
+    ip_address = "0.0.0.0/0" # Allow all IPs (for jl purposes)
     priority   = 200
     name       = "ip-access-rule1"
     action     = "Allow"
@@ -154,8 +154,8 @@ libre_app_debug_logging = true
 libre_app_debug_console = false
 
 # Endpoints
-libre_app_endpoints = "azureOpenAI"
-
+libre_app_endpoints = "azureOpenAI,gptPlugins,azureAssistants"
+libre_app_plugin_models = "gpt-4o"
 # Azure OpenAI
 libre_app_az_oai_api_key                      = null # leave null to use the key saved in keyvault created by this module
 libre_app_az_oai_models                       = "gpt-4o,gpt-4o-mini,gpt-4"
@@ -164,6 +164,7 @@ libre_app_az_oai_instance_name                = null # leave null to use the ins
 libre_app_az_oai_api_version                  = "2023-07-01-preview"
 libre_app_az_oai_dall3_api_version            = "2023-12-01-preview"
 libre_app_az_oai_dall3_deployment_name        = "dall-e-3"
+libre_app_az_oai_title_convo_model            = "gpt-4o-mini"
 
 # Plugins
 libre_app_debug_plugins     = true
@@ -226,10 +227,14 @@ rag_api_app_embeddings_model = "text-embedding-3-large"
 rag_api_app_embeddings_provider = "azure"
 rag_api_app_api_version = "2023-05-15"
 
-## pgsql for RAG API ###
+## rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
+
+# ... other new variable values ...
+
+## pgsql
 pgsql_server_name = "prisegptpgsql"
 pgsql_version = "13"
-pgsql_administrator_login = "adminTerraform"
+pgsql_administrator_login = "admin"
 pgsql_storage_mb = 32768
 pgsql_sku_name = "GP_Standard_D2s_v3"
 pgsql_backup_retention_days = 7
