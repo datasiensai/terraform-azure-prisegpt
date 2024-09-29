@@ -9,12 +9,12 @@ Version **1.x.** LibreChat on Azure with following features
 
 ## Coming next - Feature development
 
-### v1.1.x (in development)
+### v1.1.0 (in development)
 
 - [ ] Support for Models available on demand via Azure AI Studio
 
 
-### v1.0.x (current)
+### v1.0.0 (current)
 
 - [x] LibreChat on Azure with following features
 - [x] Chat History (with CosmosDB)
@@ -37,11 +37,11 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
 
 ## Architecture Diagram
 
-![PriseGPT Azure Architecture](https://raw.githubusercontent.com/datasiensai/prisegpt/main/assets/PriseGPT_Azure_Architecture.jpg)
+![PriseGPT Azure Architecture](https://raw.githubusercontent.com/datasiensai/terraform-azure-prisegpt/main/assets/PriseGPT_Azure_Architecture.jpg)
 
 ## Examples
 
-- [Public Deployment with Custom Domain and IP Whitelisting](https://github.com/datasiensai/prisegpt/tree/main/examples/public_deployment_with_custom_domain)
+- [Public Deployment with Custom Domain and IP Whitelisting](https://github.com/datasiensai/terraform-azure-prisegpt/tree/main/examples/public_deployment_with_custom_domain)
 
 ## Screens
 
@@ -51,16 +51,16 @@ While Azure OpenAI does come with a cost, it's highly affordable—often, a conv
     <td><strong>Chat with Files</strong></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/Artifacts.png" alt="Artifacts Like Claude" style="max-width: 100%; height: auto;"></td>
-    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/FileChat.png" alt="Chat with Files" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/Artifacts.png" alt="Artifacts Like Claude" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/FileChat.png" alt="Chat with Files" style="max-width: 100%; height: auto;"></td>
   </tr>
   <tr>
     <td><strong>Create and Share Prompt Templates</strong></td>
     <td><strong>Compare output from different models</strong></td>
   </tr>
   <tr>
-    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="max-width: 100%; height: auto;"></td>
-    <td><img src="https://github.com/datasiensai/prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/PromptTemplates.png" alt="Create and Share Prompt Templates" style="max-width: 100%; height: auto;"></td>
+    <td><img src="https://github.com/datasiensai/terraform-azure-prisegpt/blob/main/assets/ModelComparison.png" alt="Compare output from different models" style="max-width: 100%; height: auto;"></td>
   </tr>
 </table>
 
