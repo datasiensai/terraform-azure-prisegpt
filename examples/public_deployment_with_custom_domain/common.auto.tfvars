@@ -1,7 +1,7 @@
 ### 01 Common Variables + RG ###
 resource_group_name = "PriseGPT-RG"
-location            = "SwedenCentral"
-subscription_id = "<Add your subscription id here>"
+location            = "SwedenCentral" ## Change this to your desired location - For EU customers SwedenCentral is recommended
+
 tags = {
   Terraform   = "True"
   Description = "PriseGPT - ChatGPT for the Enterprise"
@@ -10,11 +10,11 @@ tags = {
 }
 
 ### 02 networking ###
-virtual_network_name = "prise-vnet"
-vnet_address_space   = ["10.0.0.0/8"]
+virtual_network_name = "prisegpt-vnet" ## Change this to your vnet name
+vnet_address_space   = ["10.0.0.0/8"] ## Change this to your vnet address space
 subnet_config = {
-  subnet_name                                   = "prisegpt-sub"
-  subnet_address_space                          = ["10.3.0.0/16"]
+  subnet_name                                   = "prisegpt-sub" ## Change this to your subnet name
+  subnet_address_space                          = ["10.3.0.0/16"] ## Change this to your subnet address space
   service_endpoints                             = ["Microsoft.AzureCosmosDB", "Microsoft.Web", "Microsoft.KeyVault"]
   private_endpoint_network_policies_enabled     = "Enabled"
   private_link_service_network_policies_enabled = false
@@ -29,17 +29,17 @@ subnet_config = {
 }
 
 ### 03 KeyVault ###
-kv_name                  = "prisegptkv"
+kv_name                  = "prisegptkv" ## Change this to your keyvault name
 kv_sku                   = "standard"
 kv_fw_default_action     = "Deny"
 kv_fw_bypass             = "AzureServices"
-kv_fw_allowed_ips        = ["0.0.0.0/0"] # Allow all IPs (for jl purposes)
+kv_fw_allowed_ips        = ["0.0.0.0/0"] # Allow all IPs if you dont have a fixed ip
 kv_fw_network_subnet_ids = null          # leave null to allow access from default subnet of this module
 
 ### 04 Create OpenAI Service ###
-oai_account_name                       = "prisegptoai"
+oai_account_name                       = "prisegptoai" ## Change this to your openai account name
 oai_sku_name                           = "S0"
-oai_custom_subdomain_name              = "prisegptoai"
+oai_custom_subdomain_name              = "prisegptoai" ## Change this to your openai custom subdomain name
 oai_dynamic_throttling_enabled         = false
 oai_fqdns                              = []
 oai_local_auth_enabled                 = true
@@ -51,6 +51,7 @@ oai_identity = {
 }
 oai_network_acls = null
 oai_storage      = null
+## Change section below to your desired models
 oai_model_deployment = [
   {
     deployment_id   = "gpt-4o"
@@ -100,7 +101,7 @@ oai_model_deployment = [
 ]
 
 ### 05 cosmosdb ###
-cosmosdb_name                    = "prisegptcosmosdb"
+cosmosdb_name                    = "prisegptcosmosdb" ## Change this to your cosmosdb name
 cosmosdb_offer_type              = "Standard"
 cosmosdb_kind                    = "MongoDB"
 cosmosdb_automatic_failover      = false
@@ -122,7 +123,7 @@ cosmosdb_public_network_access_enabled     = true
 ### 06 app services (librechat app + meilisearch) ###
 # App Service Plan
 app_service_name     = "prisegptasp"
-app_service_sku_name = "B2"
+app_service_sku_name = "B1"
 
 # LibreChat App Service
 libre_app_name                          = "prisegptchatapp"
@@ -131,7 +132,7 @@ libre_app_virtual_network_subnet_id     = null # Access is allowed on the built 
 libre_app_allowed_subnets               = null # Add any other subnet ids to allow access to the app service (optional)
 libre_app_allowed_ip_addresses = [
   {
-    ip_address = "0.0.0.0/0" # Allow all IPs (for jl purposes)
+    ip_address = "0.0.0.0/0" # Allow all IPs for testing purposes
     priority   = 200
     name       = "ip-access-rule1"
     action     = "Allow"
@@ -214,28 +215,28 @@ librechat_app_custom_dns_zone_name = "domain.com"
 dns_resource_group_name            = "DNS-Resource-Group-Name"
 
 
-### 07 RAG API Container App ###
+### 07 RAG API Container App - Change values below to your desired values ###
 rag_api_app_name = "prisegptragapi"
-rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:fc887ba84797c2ba29b5f2302f70458001b34290"
+rag_api_app_image = "ghcr.io/danny-avila/librechat-rag-api-dev:latest"
 rag_api_app_cpu = "1.0"
 rag_api_app_memory = "2.0Gi"
 rag_api_subnet_config = {
   subnet_name          = "rag-api-subnet"
   subnet_address_space = ["10.5.0.0/16"]
 }
-rag_api_app_embeddings_model = "text-embedding-3-large"
+rag_api_app_embeddings_model = "text-embedding-3-large" # text-embedding-3-large is $0.00013/1000 tokens. This can be any embedding model supported by Azure OpenAI text-embedding-ada-002 $0.0001/1000 tokens or text-embedding-3-small $0.00002/1000 tokens
 rag_api_app_embeddings_provider = "azure"
 rag_api_app_api_version = "2023-05-15"
 
-## rag_api_dns_zone_name = "privatelink.azurecontainerapps.io"
 
-# ... other new variable values ...
 
 ## pgsql
-pgsql_server_name = "prisegptpgsql"
+pgsql_server_name = "prisegptpgsql" ## Change this to your pgsql server name
 pgsql_version = "13"
 pgsql_administrator_login = "admin"
-pgsql_storage_mb = 32768
-pgsql_sku_name = "GP_Standard_D2s_v3"
+pgsql_storage_mb = 32768 # 32GB of storage is the minimum for Azure Postgres Flexible Server
+pgsql_sku_name = "B_Standard_B1ms" 
+## Change this to your desired sku - B1ms (1vcore/2GB) is $14/month - 
+## The B-series is burstable CPU and cheaper. If you wish for a dedicate vcore, you can change this to GP_Standard_D2ds_v5 which is $136 with 2vcore/8GB
 pgsql_backup_retention_days = 7
 database_extensions = ["vector"]

@@ -31,22 +31,81 @@ resource "azurerm_container_app" "rag_api_app_name" {
       cpu    = "1.0"
       memory = "2.0Gi"
 
-      # Environment variables for the container
-      # Many of these reference secrets defined below
       env {
         name        = "RAG_AZURE_OPENAI_API_KEY"
         secret_name = "openai-api-key"
       }
-      # ... (other env variables omitted for brevity)
+      env {
+        name        = "RAG_AZURE_OPENAI_ENDPOINT"
+        secret_name = "openai-endpoint"
+      }
+      env {
+        name        = "EMBEDDINGS_PROVIDER"
+        value = var.rag_api_app_embeddings_provider
+      }
+      env {
+        name        = "EMBEDDINGS_MODEL"
+        value = var.rag_api_app_embeddings_model
+      }
+      env {
+        name        = "OPENAI_API_VERSION"
+        value = var.rag_api_app_api_version
+      }
+      env {
+        name        = "VECTOR_DB_TYPE"
+        value = "pgvector"
+      }
+      env {
+        name        = "POSTGRES_DB"
+        value = "postgres"  # Default database name for PostgreSQL
+      }
+      env {
+        name        = "POSTGRES_USER"
+        secret_name = "postgres-user"
+      }
+      env {
+        name        = "POSTGRES_PASSWORD"
+        secret_name = "postgres-password"
+      }
+      env {
+        name        = "DB_HOST"
+        secret_name = "postgres-host"
+      }
+      env {
+        name        = "DB_PORT"
+        value = "5432"  # Default PostgreSQL port
+      }
+      env {
+        name        = "DEBUG_RAG_API"
+        value = "true"  # Set Debug to true
+      }
     }
   }
 
-  # Define secrets for the Container App
   secret {
     name  = "openai-api-key"
     value = azurerm_cognitive_account.az_openai.primary_access_key
   }
-  # ... (other secrets omitted for brevity)
+
+  secret {
+    name  = "openai-endpoint"
+    value = azurerm_cognitive_account.az_openai.endpoint
+  }
+
+  secret {
+    name  = "postgres-user"
+    value = azurerm_postgresql_flexible_server.default.administrator_login
+  }
+
+  secret {
+    name  = "postgres-password"
+    value = azurerm_postgresql_flexible_server.default.administrator_password
+  }
+
+  secret {
+    name  = "postgres-host"
+    value = azurerm_postgresql_flexible_server.default.fqdn
+  }
 
   # Configure ingress for the Container App
   ingress {
